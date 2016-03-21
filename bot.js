@@ -8,7 +8,7 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 
 		var res = {};
 		res["嗨"] = "哈囉~";
-		res["你是誰"] = "我是 Larry 養的布丁狗";
+		res["你是誰"] = "我是 Larry 跟 Annie 一起養的布丁狗";
 		res["YA"] = "YA個屁";
 		res["今天要吃什麼呢"] = "吃布丁~布丁好吃~";
 		res["你有在打LOL嗎"] = "有喔 我的暱稱叫統二布丁";
