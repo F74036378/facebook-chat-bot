@@ -5,6 +5,7 @@ var larryID = 100001567752835;
 var res = {};
 var questionList = "";
 
+var goodTimes = 0;
 
 function initResponse(){
 	res["嗨"] =					{ body: "哈囉~" };
@@ -30,6 +31,7 @@ function initQuestion(){
 		questionList += order.toString() + "." + key + "\n";
 	}
 }
+
 
 
 login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callback (err, api) {
@@ -61,9 +63,13 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 		}
 
 		
-		if(message["attachments"][0]["type"] === "sticker"){
+		if(message["attachments"][0] != undefined && message["attachments"][0]["type"] === "sticker"){
 
-			str = "讚個屁";
+			str = "";
+			goodTimes++;
+			for(i=0 ; i<goodTimes%10 ; i++){
+				str += "讚個屁";
+			}
 			api.sendMessage(str, message.threadID);
 			
 		}
