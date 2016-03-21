@@ -20,6 +20,8 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 
 			} else if(message.body == '/stop'){
 
+				str = "拜拜~"
+				api.sendMessage(str, message.threadID);
 				return stop();
 
 			} else {
@@ -29,6 +31,9 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 				str += "你可以說:\n";
 				str += "1.嗨\n";
 				str += "2.你是誰\n";
+				str += "3.YA\n"
+				str += "4.今天要吃什麼呢\n";
+				str += "5.你有在打LOL嗎\n";
 
 				api.sendMessage(str, message.threadID);
 
