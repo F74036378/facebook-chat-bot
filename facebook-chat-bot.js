@@ -5,6 +5,7 @@ var larryID = 100001567752835;
 var res = {};
 var questionList = "";
 
+var larryIsSleep = false;
 var goodTimes = 0;
 
 function initResponse(){
@@ -14,7 +15,8 @@ function initResponse(){
 	res["YA"] =					{ body: "YA個屁" };
 	res["今天要吃什麼呢"] =		{ body: "可以吃布丁阿~布丁好吃~" };
 	res["你有在打LOL嗎"] =		{ body: "有喔 我的暱稱叫統二布丁" };
-	res["你有女朋友嗎"] =		{ body: "我沒有女朋友 但是我的主人有女朋友 她叫王詩涵" };
+	res["你有女朋友嗎"] =		{ body: "我沒有女朋友\n但是我的主人有女朋友\n她叫王詩涵" };
+	res["承億睡了嗎"] =			{ body: "還沒~" };
 
 	//res["課表"] =				{ attachment: fs.createReadStream("./attachment/curriculum.png") }
 }
@@ -33,7 +35,6 @@ function initQuestion(){
 }
 
 
-
 login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callback (err, api) {
 	if(err) return console.error(err);
 
@@ -45,7 +46,12 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 		if(err) return console.error(err);
 
 		if(message.body){
-			if(message.body in res){
+			if(message.body === '承億睡了嗎' && larryIsSleep){
+				
+				str = "他已經去睡了~\n你也早點睡吧";
+				api.sendMessage(str, message.threadID);
+
+			} else if(message.body in res){
 
 				api.sendMessage(res[message.body], message.threadID);
 
@@ -55,6 +61,18 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 				api.sendMessage(str, message.threadID);
 				return stop();
 
+			} else if(message.body === '/sleep'){
+			
+				str = "Larry晚安~";
+				api.sendMessage(str, message.threadID);
+				larryIsSleep = true;
+
+			} else if(message.body === '/wake'){
+
+				str = "早安Larry~";
+				api.sendMessage(str, message.threadID);
+				larryIsSleep = false;
+				
 			} else {
 
 				api.sendMessage(questionList, message.threadID);
@@ -67,7 +85,7 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 
 			str = "";
 			goodTimes++;
-			for(i=0 ; i<goodTimes%10 ; i++){
+			for(i=0 ; i<goodTimes%10+1 ; i++){
 				str += "讚個屁";
 			}
 			api.sendMessage(str, message.threadID);
