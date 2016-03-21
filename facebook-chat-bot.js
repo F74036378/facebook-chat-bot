@@ -8,13 +8,14 @@ var questionList = "";
 
 function initResponse(){
 	res["嗨"] =					{ body: "哈囉~" };
+	res["布丁狗"] =				{ body: "嗨嗨~我是布丁狗" };
 	res["你是誰"] =				{ body: "我是 Larry 跟 Annie 一起養的布丁狗" };
 	res["YA"] =					{ body: "YA個屁" };
-	res["今天要吃什麼呢"] =		{ body: "吃布丁~布丁好吃~" };
+	res["今天要吃什麼呢"] =		{ body: "可以吃布丁阿~布丁好吃~" };
 	res["你有在打LOL嗎"] =		{ body: "有喔 我的暱稱叫統二布丁" };
 	res["你有女朋友嗎"] =		{ body: "我沒有女朋友 但是我的主人有女朋友 她叫王詩涵" };
 
-	res["課表"] =				{ attachment: fs.createReadStream("./attachment/curriculum.png")}
+	//res["課表"] =				{ attachment: fs.createReadStream("./attachment/curriculum.png") }
 }
 
 
@@ -48,7 +49,7 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 
 			} else if(message.body === '/stop'){
 
-				str = "拜拜~"
+				str = "拜拜~";
 				api.sendMessage(str, message.threadID);
 				return stop();
 
@@ -58,6 +59,15 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 
 			}
 		}
+
+		
+		if(message["attachments"][0]["type"] === "sticker"){
+
+			str = "讚個屁";
+			api.sendMessage(str, message.threadID);
+			
+		}
+		
 	});
 
 });
