@@ -12,6 +12,7 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 		res["YA"] = "YA個屁";
 		res["今天要吃什麼呢"] = "吃布丁~布丁好吃~";
 		res["你有在打LOL嗎"] = "有喔 我的暱稱叫統二布丁";
+		res["你有女朋友嗎"] = "我沒有女朋友 但是我的主人有女朋友 她叫王詩涵"
 
 		if(message.body){
 			if(message.body in res){
@@ -29,11 +30,13 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 				str = "";
 				str += "我聽不懂你在說什麼\n";
 				str += "你可以說:\n";
+
 				str += "1.嗨\n";
 				str += "2.你是誰\n";
 				str += "3.YA\n"
 				str += "4.今天要吃什麼呢\n";
 				str += "5.你有在打LOL嗎\n";
+				str += "6.你有女朋友嗎\n";
 
 				api.sendMessage(str, message.threadID);
 
