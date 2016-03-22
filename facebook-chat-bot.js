@@ -3,6 +3,7 @@ var login = require("facebook-chat-api");
 var respond = require("./functions/respond");
 
 var larryID = 100001567752835;
+var annieID = 100000322326684;
 var goodTimes = 0;
 
 

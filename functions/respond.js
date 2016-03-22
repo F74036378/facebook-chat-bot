@@ -11,6 +11,7 @@ addQuestion("YA我今天撿到一百塊");
 addQuestion("今天晚餐要吃什麼呢");
 addQuestion("你有在打LOL嗎");
 addQuestion("你有交女朋友嗎");
+addQuestion("台灣大學在哪裡");
 addQuestion("承億已經去睡了嗎");
 
 sysRes = {};
@@ -43,26 +44,8 @@ function getSysResponse(req){
 };
 
 function getRegularResponse(req){
-	if(req.indexOf("承億") != -1 && req.indexOf("睡") != -1){
-		if(larryIsSleep)
-			return "他已經去睡了~\n你也早點睡吧";
-		return "還沒~";
-	}
-
-	if(req.indexOf("YA") != -1){
-		return "YA個屁";
-	}
-
-	if(req.indexOf("吃") != -1){
-		return "吃布丁~布丁好吃~";
-	}
-
-	if(req.indexOf("lol") != -1){
-		return "我也有在打LOL喔 我的暱稱叫統二布丁";
-	}
-
 	if(req.indexOf("嗨") != -1 || req.indexOf("哈囉") != -1 || req.indexOf("hi") != -1 || req.indexOf("你好") != -1){
-		return "哈囉~";
+		return "哈囉你好\n我是可愛的布丁狗";
 	}
 
 	if(req.indexOf("布丁狗") != -1){
@@ -73,8 +56,30 @@ function getRegularResponse(req){
 		return "我是 Larry 跟 Annie 一起養的布丁狗";
 	}
 
+	if(req.indexOf("ya") != -1){
+		return "YA個屁";
+	}
+
+	if(req.indexOf("吃") != -1){
+		return "吃布丁~布丁好吃~";
+	}
+
+	if(req.indexOf("lol") != -1){
+		return "我也有在打LOL喔\n我的暱稱叫統二布丁";
+	}
+
 	if(req.indexOf("你有女朋友嗎") != -1){
 		return "我沒有女朋友\n但是我的主人有女朋友\n她叫王詩涵";
+	}
+
+	if(req.substring(req.length-3, req.length) === "在哪裡"){
+		return "https://www.google.com.tw/maps/place/" + req.substring(0, req.length-3);
+	}
+
+	if(req.indexOf("承億") != -1 && req.indexOf("睡") != -1){
+		if(larryIsSleep)
+			return "他已經去睡了~\n你也早點睡吧";
+		return "還沒~";
 	}
 
 	return questionList;
