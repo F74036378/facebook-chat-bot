@@ -26,7 +26,7 @@ for(req in sameRes){
 }
 addQuestion("承億睡了嗎");
 
-console.log("respond init OK");
+console.log("init respond OK");
 
 
 
@@ -40,9 +40,10 @@ function addQuestion(question){
 
 
 function multiRes(req){
-	if(req === "承億睡了嗎"){
-		if(larryIsSleep) return "他已經去睡了~\n你也早點睡吧";
-		return "還沒~";
+	switch(req){
+		case "承億睡了嗎":
+			if(larryIsSleep) return "他已經去睡了~\n你也早點睡吧";
+			return "還沒~";
 	}
 	return "";
 }
