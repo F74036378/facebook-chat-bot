@@ -4,7 +4,6 @@ var respond = require("./functions/respond");
 
 var larryID = 100001567752835;
 
-var larryIsSleep = false;
 var goodTimes = 0;
 
 	//res["課表"] =				{ attachment: fs.createReadStream("./attachment/curriculum.png") }
@@ -20,33 +19,21 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 		if(message.body){
 			var str = "";
 
-			if(message.body === '承億睡了嗎' && larryIsSleep){
-				
-				str = "他已經去睡了~\n你也早點睡吧";
+			if(message.body.charAt(0) == '/'){
+
+				str = respond.getSysResponse(message.body);
+				if(!str) str = "no this command";
+
 				api.sendMessage(str, message.threadID);
+
+				if(message.body === '/stop'){
+					return stop();
+				}
 
 			} else if((str = respond.getResponse(message.body))){
 
 				api.sendMessage(str, message.threadID);
 
-			} else if(message.body === '/stop'){
-
-				str = "拜拜~";
-				api.sendMessage(str, message.threadID);
-				return stop();
-
-			} else if(message.body === '/sleep'){
-			
-				str = "Larry晚安~";
-				api.sendMessage(str, message.threadID);
-				larryIsSleep = true;
-
-			} else if(message.body === '/wake'){
-
-				str = "早安Larry~";
-				api.sendMessage(str, message.threadID);
-				larryIsSleep = false;
-				
 			} else {
 
 				str = respond.getQuestion();
