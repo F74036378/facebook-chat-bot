@@ -27,7 +27,7 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 
 		}
 
-		
+/*		
 		if(message["attachments"][0] != undefined && message["attachments"][0]["type"] === "sticker"){
 
 			str = "";
@@ -38,6 +38,7 @@ login({email: "puddingddoogg@gmail.com", password: "mz6s3zfe"}, function callbac
 			goodTimes++;
 			
 		}
+*/
 		
 	});
 

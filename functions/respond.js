@@ -12,14 +12,9 @@ addQuestion("今天晚餐要吃什麼呢");
 addQuestion("你有在打LOL嗎");
 addQuestion("你有交女朋友嗎");
 addQuestion("台灣大學在哪裡");
-addQuestion("承億已經去睡了嗎");
 
 sysRes = {};
 sysRes["/stop"] =		{ body: "拜拜~" };
-sysRes["/sleep"] =		{ body: "Larry晚安~" };
-sysRes["/wake"] =		{ body: "早安Larry~" };
-
-larryIsSleep = false;
 
 console.log("init respond OK");
 
@@ -31,8 +26,7 @@ function addQuestion(question){
 }
 
 function sysTask(req){
-	if(req === "/sleep") larryIsSleep = true;
-	else if(req === "/wake") larryIsSleep = false;
+	return;
 }
 
 function getSysResponse(req){
@@ -74,12 +68,6 @@ function getRegularResponse(req){
 
 	if(req.substring(req.length-3, req.length) === "在哪裡"){
 		return "https://www.google.com.tw/maps/place/" + req.substring(0, req.length-3);
-	}
-
-	if(req.indexOf("承億") != -1 && req.indexOf("睡") != -1){
-		if(larryIsSleep)
-			return "他已經去睡了~\n你也早點睡吧";
-		return "還沒~";
 	}
 
 	return questionList;
