@@ -68,7 +68,7 @@ function getRegularResponse(req){
 		return "我也有在打LOL喔\n我的暱稱叫統二布丁";
 	}
 
-	if(req.indexOf("你有女朋友嗎") != -1){
+	if(req.indexOf("女朋友") != -1){
 		return "我沒有女朋友\n但是我的主人有女朋友\n她叫王詩涵";
 	}
 
